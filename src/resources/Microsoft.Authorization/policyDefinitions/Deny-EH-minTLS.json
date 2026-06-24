@@ -1,19 +1,17 @@
 {
-  "name": "Deny-PublicEndpoint-MariaDB",
+  "name": "Deny-EH-minTLS",
   "type": "Microsoft.Authorization/policyDefinitions",
   "apiVersion": "2021-06-01",
   "scope": null,
   "properties": {
     "policyType": "Custom",
-    "mode": "Indexed",
-    "displayName": "[Deprecated] Public network access should be disabled for MariaDB",
-    "description": "This policy denies the creation of Maria DB accounts with exposed public endpoints. Superseded by https://www.azadvertizer.net/azpolicyadvertizer/fdccbe47-f3e3-4213-ad5d-ea459b2fa077.html",
+    "mode": "All",
+    "displayName": "Event Hub namespaces should use a valid TLS version",
+    "description": "Event Hub namespaces should use a valid TLS version.",
     "metadata": {
-      "version": "1.0.0-deprecated",
-      "category": "SQL",
+      "version": "1.1.2",
+      "category": "Event Hub",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "deprecated": true,
-      "supersededBy": "fdccbe47-f3e3-4213-ad5d-ea459b2fa077",
       "alzCloudEnvironments": [
         "AzureCloud",
         "AzureChinaCloud",
@@ -33,6 +31,14 @@
           "displayName": "Effect",
           "description": "Enable or disable the execution of the policy"
         }
+      },
+      "minTlsVersion": {
+        "type": "string",
+        "metadata": {
+          "displayName": "Minimum TLS Version",
+          "description": "Minimum TLS version to be used by Event Hub"
+        },
+        "defaultValue": "1.2"
       }
     },
     "policyRule": {
@@ -40,11 +46,19 @@
         "allOf": [
           {
             "field": "type",
-            "equals": "Microsoft.DBforMariaDB/servers"
+            "equals": "Microsoft.EventHub/namespaces"
           },
           {
-            "field": "Microsoft.DBforMariaDB/servers/publicNetworkAccess",
-            "notequals": "Disabled"
+            "anyOf": [
+              {
+                "field": "Microsoft.EventHub/namespaces/minimumTlsVersion",
+                "less": "[[parameters('minTlsVersion')]"
+              },
+              {
+                "field": "Microsoft.EventHub/namespaces/minimumTlsVersion",
+                "exists": "false"
+              }
+            ]
           }
         ]
       },

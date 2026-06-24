@@ -1,3 +1,6 @@
+> [!Important] 
+> We are migrating all documentation to the central Azure landing zone repository (https://azure.github.io/Azure-Landing-Zones/). This content is no longer maintained.
+
 ## Azure landing zone portal accelerator deployment for Small Enterprises
 
 In this tutorial, you will deploy an Azure landing zone portal accelerator with connectivity to on-premises datacenters and branch offices based on a [hub and spoke network topology](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/traditional-azure-networking-topology), and where Management, Connectivity and Identity resources are consolidated in a single Platform Subscription.
@@ -102,10 +105,6 @@ See [Manage usage and costs with Azure Monitor Logs](https://learn.microsoft.com
   - All Azure Defender features are enabled by default (recommended) but are fully customizable. See [Azure Defender pricing](https://azure.microsoft.com/en-us/pricing/details/azure-defender/) for further details on the costs associated with each of the Azure Defender features.
 
   ![mgmtTab-asc](./media/clip_image014asc-2-singlesubscription.jpg)
-
-- Depending on your requirements, you may want to select **Deploy Azure Sentinel** to enable [Azure Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/overview) in your Log Analytics Workspace. Please note, enabling Azure Sentinel will introduce additional costs. See [Azure Sentinel Pricing](https://azure.microsoft.com/en-us/pricing/details/azure-sentinel/) for additional information.
-
-  **In this tutorial, Azure Sentinel is not enabled**. [Azure Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/quickstart-onboard) can be deployed at any stage after the the Landing Zone has been deployed.
 
   ![mgmtTab-asc](./media/clip_image014asc-3-singlesubscription.jpg)
 

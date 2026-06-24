@@ -13,17 +13,19 @@
             "defaultValue": [
                 "management",
                 "connectivity",
-                "identity"
+                "identity",
+                "security"
             ],
             "metadata": {
-                "description": "Management groups for platform specific purposes, such as management, networking, identity etc."
+                "description": "Management groups for platform specific purposes, such as management, networking, identity, security etc."
             }
         },
         "landingZoneMgs": {
             "type": "array",
             "defaultValue": [
                 "online",
-                "corp"
+                "corp",
+                "local"
             ],
             "metadata": {
                 "description": "These are the landing zone management groups."
